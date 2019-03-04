@@ -8,7 +8,7 @@
  */
 
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, TextInput } from 'react-native';
+import { Platform, StyleSheet, Text, View, TextInput, Button } from 'react-native';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -32,12 +32,17 @@ export default class App extends Component<Props> {
   render() {
     return (
       <View style={styles.container}>
-        <TextInput
-          style={{ width: 300 }}
-          placeholder="Enter the Place"
-          underlineColorAndroid={'teal'}
-          value={this.state.placeName}
-          onChangeText={this.placeNameChangedHandler} />
+        <View style={styles.inputContainer}>
+          <TextInput
+            placeholder="Enter the Place"
+            underlineColorAndroid={'teal'}
+            value={this.state.placeName}
+            onChangeText={this.placeNameChangedHandler}
+            style={styles.placeInput} />
+          <Button
+            title="Add"
+            style={styles.placeButton} />
+        </View>
       </View>
     );
   }
@@ -50,5 +55,18 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
     backgroundColor: '#FFF',
+  },
+  inputContainer: {
+    // flex: 1,
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center'
+  },
+  placeInput: {
+    width: '70%'
+  },
+  placeButton: {
+    width: '30%'
   },
 });
